@@ -8,21 +8,25 @@ print(' ~~~ Welcome to your terminal checkbook! ~~~ ')
 def user_options():
     print('\nWhat would you like to do? Please select an option')
 
-    prompt = int(input('''\n1) view current balance\n'''+'''2) record a debit (withdrawl)\n'''+'''3) record a credit (deposit)\n'''+'''4) exit\n'''))
-    print('Your choice: {}'.format(prompt))
+    prompts = {
+    1: realtime_balance,
+    2: debit_balance,
+    3: credit_balance,
+    4: exit
+    }
 
-    if prompt==1:
-        print('Your current balance is $%.2f' % current_balance)
-        user_options()
-    elif prompt==2:
-        user=debit_balance()
-    elif prompt==3:
-        user=credit_balance()
-    elif prompt==4:
-        print('\nThanks, have a great day!')
-    else:
-        print('Invalid choice: {}'.format(prompt))
-        user_options()
+    while(True):
+        prompt = float(input('''\n1) View Current Balance\n'''+'''2) Record a Debit (Withdrawl)\n'''+'''3) Record a Credit (Deposit)\n'''+'''4) Exit\n'''))
+        print('Your choice: {}'.format(prompt))
+
+        if  prompt in prompts:
+            prompts[prompt]()
+        else:
+            print('Invalid choice: {}'.format(prompt))
+
+def realtime_balance():
+    global current_balance
+    print('Your current balance is ${}'.format(current_balance))
 
 def debit_balance():
     amount = float(input('How much is the debit: $'))
@@ -36,6 +40,7 @@ def credit_balance():
     global current_balance
     current_balance = current_balance + amount
     # print('\nYour current balansce is $%.2f' % current_balance)
-    user_options()
+    user_options()    
 
 user_options()
+
