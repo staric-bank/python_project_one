@@ -26,13 +26,13 @@ def user_options():
     #     user_options()
 
 
-# def debit_balance(current_balance, amount):
-#     print('How much is the debit?')
-#     if current_balance - amount < 0:
-#         print('Non-sufficient funds')
-#     else:
-#         current_balance -= amount
-#     return current_balance
+def debit_balance(amount):
+    amount = float(input('How much is the debit: $'))
+    current_balance -= amount
+    print("Your new account balance is %.2f" % current_balance)
+    user_options()
 
+def credit_balance(amount):
+    amount = float(input('How much is the credit: $'))
 user_options()
 # print('Thanks, have a great day!')
