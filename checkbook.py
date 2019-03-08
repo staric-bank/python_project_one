@@ -16,8 +16,12 @@ def user_options():
     }
 
     while(True):
-        prompt = float(input('''\n1) View Current Balance\n'''+'''2) Record a Debit (Withdrawl)\n'''+'''3) Record a Credit (Deposit)\n'''+'''4) Exit\n'''))
-        print('Your choice: {}'.format(prompt))
+        try:
+            prompt = int(input('''\n1) View Current Balance\n'''+'''2) Record a Debit (Withdrawl)\n'''+'''3) Record a Credit (Deposit)\n'''+'''4) Exit\n'''))
+            print('Your choice: {}'.format(prompt))
+        except ValueError:
+            print('Invalid choice')
+            continue
 
         if  prompt in prompts:
             prompts[prompt]()
@@ -27,6 +31,7 @@ def user_options():
 def realtime_balance():
     global current_balance
     print('Your current balance is ${}'.format(current_balance))
+    user_options()
 
 def debit_balance():
     amount = float(input('How much is the debit: $'))
@@ -40,7 +45,7 @@ def credit_balance():
     global current_balance
     current_balance = current_balance + amount
     # print('\nYour current balansce is $%.2f' % current_balance)
-    user_options()    
+    user_options()  
 
 user_options()
 
