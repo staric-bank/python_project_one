@@ -33,7 +33,7 @@ def debit_balance():
 
 def credit_balance():
     amount = float(input('How much is the credit: $'))
-    global credit_balance
+    global current_balance
     current_balance = current_balance + amount
     # print('\nYour current balansce is $%.2f' % current_balance)
     user_options()
