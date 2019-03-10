@@ -39,14 +39,28 @@ def realtime_balance():
     user_options()
 
 def debit_balance():
-    amount = float(input('How much is the debit: $').replace('$',''))
+    while(True):
+        try:
+            amount = float(input('How much is the debit: $').replace('$',''))
+            break
+        except ValueError:
+            print('Please enter an exact amount')
+            continue
+
     global current_balance
     current_balance = current_balance - amount
     updated_balance()
     user_options()
 
 def credit_balance():
-    amount = float(input('How much is the credit: $'))
+    while(True):
+        try:
+            amount = float(input('How much is the credit: $'))
+            break
+        except ValueError:
+            print('Please enter an exact amount')
+            continue 
+
     global current_balance
     current_balance = current_balance + amount
     updated_balance()
