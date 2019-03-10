@@ -30,8 +30,6 @@ def user_options():
 
         if  prompt in prompts:
             prompts[prompt]()
-        else:
-            print('Invalid choice: {}'.format(prompt))
 
 def realtime_balance():
     global current_balance
