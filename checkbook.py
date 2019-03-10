@@ -2,10 +2,10 @@
 # Command Line Checkbook Application
 
 with open('checkbook_register.txt') as f:
-    statement = f.readlines()
+    statement_balance = f.readlines()
     pass
 
-current_balance = float(statement[-1].replace('+','').replace('-',''))
+current_balance = float(statement_balance[-1].replace('+','').replace('-',''))
 
 print(' ~~~ Welcome to your terminal checkbook! ~~~ ')
 
