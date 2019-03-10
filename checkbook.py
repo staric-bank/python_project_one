@@ -1,14 +1,16 @@
 # Python Project
 # Command Line Checkbook Application
-with open('checkbook_register.txt') as f:
-    file_contents = f.read()
-    
-current_balance = 0.00
 
+with open('checkbook_register.txt') as f:
+    statement = f.readlines()
+    pass
+
+current_balance = float(statement[-1].replace('+','').replace('-',''))
 
 print(' ~~~ Welcome to your terminal checkbook! ~~~ ')
 
 def user_options():
+    print('\n**************************************************')
     print('\nWhat would you like to do? Please select an option')
 
     prompts = {
@@ -34,6 +36,7 @@ def user_options():
 def realtime_balance():
     global current_balance
     print('Your current balance is ${}'.format(current_balance))
+    user_options()
 
 def debit_balance():
     amount = float(input('How much is the debit: $').replace('$',''))
@@ -53,6 +56,4 @@ def updated_balance():
     with open('checkbook_register.txt', 'a+') as f:
         f.write('+'+ str(current_balance) + '\n')
 
-
 user_options()
-
