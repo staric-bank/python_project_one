@@ -33,7 +33,7 @@ def user_options():
 
 def realtime_balance():
     global current_balance
-    print('Your current balance is ${}'.format(current_balance))
+    print('Your current balance is $%.2f' % current_balance)
     user_options()
 
 def debit_balance():
